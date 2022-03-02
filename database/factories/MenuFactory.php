@@ -2,13 +2,14 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Post;
+use App\Menu;
 use Faker\Generator as Faker;
 
-$factory->define(Post::class, function (Faker $faker) {
+$factory->define(Menu::class, function (Faker $faker) {
     return [
-        'date' => $faker->date,
+        'user_id' => $faker->numberBetween($min=1,$max=1),
+        'date' => $faker->dateTime,
         'muscle' => $faker->word,
-        'body' => $faker->text($maxNbChars = 2),
+        'body' => $faker->text($maxNbChars = 5),
     ];
 });

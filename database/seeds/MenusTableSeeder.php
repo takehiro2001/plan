@@ -22,6 +22,6 @@ class MenusTableSeeder extends Seeder
         //     'muscle' => '腕',
         //     'body' => '筋肉があればば怖くない',
         // ]);
-        factory(App\Menu::class, 2)->create();
+        factory(App\Menu::class, 3)->create();
     }
 }
