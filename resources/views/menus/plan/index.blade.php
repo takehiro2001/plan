@@ -15,35 +15,30 @@
         </header>
         [<a href='/past'>Past Data</a>]
         <div class='menus'>
-            @foreach ($menus as $menu)
             <div class='menu'>
-                 <table border="1" >
-                <tr>
-                  <th colspan="7">Training Plan</th>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>Monday</td>
-                  <td>Tuesday</td>
-                  <td>Wednesday</td>
-                  <td>Thursday</td>
-                  <td>Friday</td>
-                  <td>Saturday</td>
-                  <td>Sunday</td>
-                </tr>
-                <tr>
-                  <td>{{Auth::user()->name}}</td>
-                  <td></td>
-                  <td>Tuesday</td>
-                  <td>Wednesday</td>
-                  <td>Thursday</td>
-                  <td>Friday</td>
-                  <td>Saturday</td>
-                  <td>Sunday</td>
-                </tr>
-              </table>
+                <table border="1" >
+                    <tr>
+                      <th colspan="8">Training Plan</th>
+                    </tr>
+                    <tr>
+                        @foreach($weekCalenderData as $val) 
+                            <th>
+                                {{$val['day']}}({{$val['week']}})
+                            </th>
+                        @endforeach
+                    </tr>
+                    <tr>
+                        @foreach($menus as $val)
+                        @if($val == [])
+                        <th></th>
+                        @else
+                            <th>{{$val->muscle}}</th>
+                        @endif    
+                        @endforeach
+                    </tr>
+                </table>
             </div>
-            @endforeach
+            [<a href='/menus/create'>create</a>]
         </div>
         @endsection
     </body>

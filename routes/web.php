@@ -13,6 +13,10 @@
 Route::group(['middleware' => ['auth']], function(){
 Route::get('/past', 'PastController@index');
 Route::get('/', 'MenuController@index');
+Route::get('/show/{menu}', 'MenuController@show');
+Route::get('/menus/create', 'MenuController@create');
+Route::post('/menus', 'MenuController@store');
+Route::get('/mypage', 'UserController@show')->name('mypage');
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
