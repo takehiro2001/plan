@@ -5,6 +5,8 @@
         <title>Create</title>
     </head>
     <body>
+        @extends('layouts.app')　
+        @section('content')
         <h1>Share Muscle</h1>
         <form action="/menus" method="POST">
             @csrf
@@ -26,5 +28,6 @@
             <input type="submit" value="保存"/>
         </form>
         <div class="back">[<a href="/">back</a>]</div>
+        @endsection
     </body>
 </html>

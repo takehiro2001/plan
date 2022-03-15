@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
+    @extends('layouts.app')　
+    @section('content')    
         <h1 class="muscle">
             {{ $menu->muscle }}
         </h1>
@@ -21,5 +23,6 @@
         <div class="footer">
             <a href="/">return</a>
         </div>
+    @endsection
     </body>
 </html>
