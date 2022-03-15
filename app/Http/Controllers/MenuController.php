@@ -5,46 +5,25 @@ namespace App\Http\Controllers;
 use App\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 
 class MenuController extends Controller
 {   
      public function index(Menu $menu)
     {   
-        $weekCalenderData = $menu->getWeekCalender(false, "2017-03-03");
-        $date = date('Y-m-d');
-        $next_6day = date('Y-m-d', strtotime('+6 day'));
-        $menus = DB::table('menus')
-           ->whereBetween('date', [$date, $next_6day])
-           ->get();
-        $week = [date('l') => [], date('l', strtotime('+1 day')) => [], date('l', strtotime('+2 day')) => [],date('l', strtotime('+3 day')) => [],date('l', strtotime('+4 day')) => [],date('l', strtotime('+5 day')) => [],date('l', strtotime('+6 day')) => []];
-        foreach($menus as $menu){
-            $day = date('l', strtotime($menu->date));
-            switch($day){
-                case"Monday":
-                    $week["Monday"] = $menu;
-                    break;
-                case"Tuesday":
-                    $week["Tuesday"] = $menu;
-                    break;
-                case"Wednesday":
-                    $week["Wednesday"] = $menu;
-                    break;
-                case"Thursday":
-                    $week["Thursday"] = $menu;
-                    break;
-                case"Friday":
-                    $week["Friday"] = $menu;
-                    break;
-                case"Saturday":
-                    $week["Saturday"] = $menu;
-                    break;
-                case"Sunday":
-                    $week["Sunday"] = $menu;
-                    break;
-            }
+        $menus = $menu->getMenusByWeek();
+        
+        $arr = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'];
+        $weekArr = [];
+        $date = new Carbon();
+        for ($i = 0; $i < 7; $i++) {
+            $week = $date->dayOfWeek;
+            $weekArr[] = [ 
+              'date'   => $date,
+              'week'  => $arr[$week],];
+            $date = $date->copy()->addDay();
         }
-        return view('menus/plan/index')->with(['menus' => $week,'weekCalenderData' => $weekCalenderData]);
+        return view('menus/plan/index')->with(['menus' => $menus,'weekCalenderData' => $weekArr]);
     }
         /**
      * 特定IDのmenuを表示する

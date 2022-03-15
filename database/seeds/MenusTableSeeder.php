@@ -12,16 +12,18 @@ class MenusTableSeeder extends Seeder
     public function run()
     {
         
-        // DB::table('menus')->insert([
-        //     'date' => '2022-02-26',
-        //     'muscle' => '胸',
-        //     'body' => '筋トレは世界を救う',
-        // ]);
-        // DB::table('menus')->insert([
-        //     'date' => '2022-02-27',
-        //     'muscle' => '腕',
-        //     'body' => '筋肉があればば怖くない',
-        // ]);
-        factory(App\Menu::class, 3)->create();
+        DB::table('menus')->insert([
+            'date' => '2022-03-15',
+            'muscle' => '胸',
+            'body' => '筋トレは世界を救う',
+            'user_id' => 1
+        ]);
+        DB::table('menus')->insert([
+            'date' => '2022-03-20',
+            'muscle' => '腕',
+            'body' => '筋肉があればば怖くない',
+            'user_id' => 1
+        ]);
+        // factory(App\Menu::class, 3)->create();
     }
 }

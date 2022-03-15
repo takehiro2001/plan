@@ -7,6 +7,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
     </head>
     <body>
+    @extends('layouts.app')　
+    @section('content')    
         <header>
             <a href="/">return</a>
             <h1>Past Data</h1>
@@ -20,5 +22,6 @@
                 </div>
             @endforeach
                 </div>
+     @endsection
     </body>
 </html>
