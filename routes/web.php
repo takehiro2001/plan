@@ -17,6 +17,8 @@ Route::get('/show/{menu}', 'MenuController@show');
 Route::get('/menus/create', 'MenuController@create');
 Route::post('/menus', 'MenuController@store');
 Route::get('/mypage', 'UserController@show')->name('mypage');
+Route::get('/menus/{menu}/edit', 'MenuController@edit');
+Route::put('/menus/{menu}', 'MenuController@update');
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
