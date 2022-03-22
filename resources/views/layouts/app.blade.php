@@ -66,7 +66,7 @@
                                         @csrf
                                     </form>
                                     
-                                     <a class="dropdown-item" href="{{ route('mypage') }}">
+                                     <a class="dropdown-item" href="{{ route('mypage' , ['user' => Auth::id()]) }}">
                                         My page
                                     </a>
                                 </div>
@@ -76,8 +76,8 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
+        
+        <main class="py-4 container-fluid">
             @yield('content')
         </main>
     </div>

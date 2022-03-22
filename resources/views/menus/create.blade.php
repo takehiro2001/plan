@@ -22,9 +22,6 @@
                 <h2>memo</h2>
                 <textarea name="menus[body]" placeholder="Chest press 10rep"></textarea>
             </div>
-            <div class="user_id">
-            {{ Auth::id() }}
-            </div>
             <input type="submit" value="保存"/>
         </form>
         <div class="back">[<a href="/">back</a>]</div>

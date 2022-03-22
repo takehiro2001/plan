@@ -33,7 +33,7 @@ class MenuController extends Controller
      */
     public function show(Menu $menu)
     {
-        return view('menus/show/index')->with(['menu' => $menu]);
+        return view('menus/show')->with(['menu' => $menu]);
         
     }
     
@@ -58,6 +58,11 @@ class MenuController extends Controller
         $menu->fill($input_menu)->save();
     
         return redirect('/show/' . $menu->id);
+    }
+    public function delete(Menu $menu)
+    {
+        $menu->delete();
+        return redirect('/');
     }
 
 }

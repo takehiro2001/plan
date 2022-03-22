@@ -18,7 +18,7 @@ class Menu extends Model
     
     
     function getMenusByWeek() {
-      $start_date = Carbon::tomorrow();
+      $start_date = Carbon::today();
       $end_date = $start_date->copy()->addDays(6);
       $menus = DB::table('menus')
            ->whereBetween('date', [$start_date, $end_date])
