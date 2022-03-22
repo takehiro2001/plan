@@ -11,6 +11,12 @@
     <body>
     @extends('layouts.app')　
     @section('content')    
+        <p class="edit">[<a href="/menus/{{ $menu->id }}/edit">edit</a>]</p>
+        <form action="/menus/{{ $menu->id }}" id="form_{{ $menu->id }}" method="post" style="display:inline">
+            @csrf
+            @method('DELETE')
+            <button type="submit">delete</button> 
+        </form>
         <h1 class="muscle">
             {{ $menu->muscle }}
         </h1>

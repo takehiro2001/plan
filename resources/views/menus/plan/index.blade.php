@@ -10,7 +10,7 @@
         <div class='menu col'>
             <div class='date'><h5>{{$val['date']->format('m月d日')}}({{$val['week']}})</h5></div>
             @if($menus[(string)$val['date']->format('Y-m-d')])
-                <a href="/show/{{$menus[(string)$val['date']->format('Y-m-d')]->id}}">{{$menus[(string)$val['date']->format('Y-m-d')]->muscle}}</a>
+                <a href="/menus/{{$menus[(string)$val['date']->format('Y-m-d')]->id}}">{{$menus[(string)$val['date']->format('Y-m-d')]->muscle}}</a>
             @endif
         </div>
     @endforeach

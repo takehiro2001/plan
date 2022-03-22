@@ -33,7 +33,7 @@ class MenuController extends Controller
      */
     public function show(Menu $menu)
     {
-        return view('menus/show/index')->with(['menu' => $menu]);
+        return view('menus/show')->with(['menu' => $menu]);
         
     }
     
@@ -47,6 +47,22 @@ class MenuController extends Controller
         $input += ['user_id' => $request->user()->id];   
         $menu->fill($input)->save();
         return redirect('/show/' . $menu->id);
+    }
+    public function edit(Menu $menu)
+    {
+        return view('menus/show/edit')->with(['menu' => $menu]);
+    }
+    public function update(Request $request, Menu $menu)
+    {
+        $input_menu = $request['menu'];
+        $menu->fill($input_menu)->save();
+    
+        return redirect('/show/' . $menu->id);
+    }
+    public function delete(Menu $menu)
+    {
+        $menu->delete();
+        return redirect('/');
     }
 
 }

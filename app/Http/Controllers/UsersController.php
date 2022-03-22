@@ -3,27 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\User;
 
 class UsersController extends Controller
 {
-    protected $user;
-
-    /**
-     * コンストラクタ
-     */
-    public function __construct(User $user)
-    {
-        $this->user = $user;
+    public function __construct(){
+        $this->middleware('auth');
     }
     
-    /**
-     * 画面表示件データ一件取得用
-     */
-    public function getEdit($id)
+    public function index(){
+        $auths = Auth::user();
+        return view('users/index', [ 'user' => $user ]);
+    }
+    
+    public function userEdit(User $user)
     {
-       $user = $this->user->selectUserFindById($id);
-        return view('users.edit', compact('user'));
+        return view('users/edit')->with(['user' => $user]);
+    }
+    
+    public function show(User $user)
+    {
+        return view('users/show')->with(['user' => $user]);
+        
+    }
+        public function update(Request $request, User $user)
+    {
+        $input_user = $request['user'];
+        $user->fill($input_user)->save();
+        
+        return redirect()->route('mypage', ['user' => Auth::id()]);
     }
 }
