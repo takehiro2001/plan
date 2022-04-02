@@ -5,6 +5,7 @@
     <h1>Share Muscle</h1>
 </header>
 [<a href='/past'>Past Data</a>]
+[<a href='/users'>Users list</a>]
 <div class='menus row'>
     @foreach($weekCalenderData as $val) 
         <div class='menu col'>
