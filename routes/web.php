@@ -11,17 +11,20 @@
 |
 */
 Route::group(['middleware' => ['auth']], function(){
-Route::get('/past', 'PastController@index');
 Route::get('/', 'MenuController@index');
-Route::get('/menus/{menu}', 'MenuController@show');
+Route::get('/past', 'PastController@index');
 Route::get('/menus/create', 'MenuController@create');
-Route::post('/menus', 'MenuController@store');
 Route::get('/users/{user}', 'UsersController@show')->name('mypage');
 Route::get('/users/{user}/edit', 'UsersController@userEdit');
+Route::get('/users', 'UsersController@index');
+Route::get('/menus/{menu}', 'MenuController@show');
 Route::get('/menus/{menu}/edit', 'MenuController@edit');
+Route::post('/menus', 'MenuController@store');
 Route::put('/menus/{menu}', 'MenuController@update');
 Route::put('/users/{user}/edit', 'UsersController@update');
 Route::delete('/menus/{menu}', 'MenuController@delete');
+Route::get('/users/{user}/follow', 'FollowUserController@follow');
+Route::get('/users/{user}/unfollow', 'FollowUserController@unfollow');
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

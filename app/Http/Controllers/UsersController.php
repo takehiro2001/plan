@@ -12,9 +12,8 @@ class UsersController extends Controller
         $this->middleware('auth');
     }
     
-    public function index(){
-        $auths = Auth::user();
-        return view('users/index', [ 'user' => $user ]);
+    public function index(User $user){
+        return view('users/index')->with(['users' => $user->get()]);
     }
     
     public function userEdit(User $user)
@@ -24,6 +23,7 @@ class UsersController extends Controller
     
     public function show(User $user)
     {
+        // dd($user->is_followed_by_auth_user());
         return view('users/show')->with(['user' => $user]);
         
     }

@@ -46,18 +46,18 @@ class MenuController extends Controller
         $input = $request['menus'];
         $input += ['user_id' => $request->user()->id];   
         $menu->fill($input)->save();
-        return redirect('/show/' . $menu->id);
+        return redirect('/menus/' . $menu->id);
     }
     public function edit(Menu $menu)
     {
-        return view('menus/show/edit')->with(['menu' => $menu]);
+        return view('menus/edit')->with(['menu' => $menu]);
     }
     public function update(Request $request, Menu $menu)
     {
         $input_menu = $request['menu'];
         $menu->fill($input_menu)->save();
     
-        return redirect('/show/' . $menu->id);
+        return redirect('/menus/' . $menu->id);
     }
     public function delete(Menu $menu)
     {
