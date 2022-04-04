@@ -19,6 +19,7 @@ Route::get('/users/{user}/edit', 'UsersController@userEdit');
 Route::get('/users', 'UsersController@index');
 Route::get('/menus/{menu}', 'MenuController@show');
 Route::get('/menus/{menu}/edit', 'MenuController@edit');
+Route::get('/timeline', 'MenuController@timeline');
 Route::post('/menus', 'MenuController@store');
 Route::put('/menus/{menu}', 'MenuController@update');
 Route::put('/users/{user}/edit', 'UsersController@update');
