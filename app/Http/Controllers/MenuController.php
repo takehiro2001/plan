@@ -64,5 +64,22 @@ class MenuController extends Controller
         $menu->delete();
         return redirect('/');
     }
+        public function timeline(Menu $menu)
+    {
+        $menus = $menu->getMenusByWeek();
+        
+        $arr = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'];
+        $weekArr = [];
+        $date = new Carbon();
+        for ($i = 0; $i < 7; $i++) {
+            $week = $date->dayOfWeek;
+            $weekArr[] = [ 
+              'date'   => $date,
+              'week'  => $arr[$week],];
+            $date = $date->copy()->addDay();
+        }
+        return view('menus/share')->with(['menus' => $menu,'weekCalenderData' => $weekArr]);
+        
+    }
 
 }

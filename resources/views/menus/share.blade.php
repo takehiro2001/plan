@@ -4,9 +4,7 @@
 <header>
     <h1>Share Muscle</h1>
 </header>
-[<a href='/past'>Past Data</a>]
-[<a href='/users'>Users list</a>]
-[<a href='/timeline'>Time Line</a>]
+<p>{{ Auth::user()->name }}</p>
 <div class='menus row'>
     @foreach($weekCalenderData as $val) 
         <div class='menu col'>
@@ -17,6 +15,8 @@
         </div>
     @endforeach
 </div>
-[<a href='/menus/create'>create</a>]
+<div class="footer">
+    <a href="/">return</a>
+</div>
 @endsection
 
